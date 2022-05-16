@@ -77,4 +77,4 @@ jobs:
             #name of my AWS Lambda Function
             function_name: ${{ github.event.inputs.func }}
             #contains all the files in my github repository
-            zip_file: ${{ github.event.inputs.func }}/test-dep-dev.zip
+            zip_file: /${{ github.event.inputs.func }}/test-dep-dev.zip
