@@ -56,7 +56,7 @@ jobs:
     
     # Runs a set of commands using the runners shell; THIS DOESN'T WORK
     - name: Run a multi-line script
-      working-directory: ${{ github.event.inputs.func }}
+      working-directory: ${{ github.event.inputs.func }}/
       run: |
          echo installing pip
          python -m pip install --upgrade pip
