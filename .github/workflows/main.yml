@@ -16,7 +16,7 @@ on:
     inputs:
       dir:
         description: 'Choose the product category [benchmarking, driver-state, driving-behavior, location-intelligence, crashmetrics, or road-conditions]'
-        required: true
+        required: false
         default: 'benchmarking'
       func:
         description: 'Choose a function to deploy'   
@@ -56,7 +56,7 @@ jobs:
     
     # Runs a set of commands using the runners shell; THIS DOESN'T WORK
     - name: Run a multi-line script
-      working-directory: crashmetrics/${{ github.event.inputs.dir }}/${{ github.event.inputs.func }}
+      working-directory: ${{ github.event.inputs.func }}
       run: |
          echo installing pip
          python -m pip install --upgrade pip
@@ -75,6 +75,6 @@ jobs:
       uses: appleboy/lambda-action@v0.0.4
       with:
             #name of my AWS Lambda Function
-            function_name: ${{ github.event.inputs.dir }}-${{ github.event.inputs.func }}
+            function_name: ${{ github.event.inputs.func }}
             #contains all the files in my github repository
-            zip_file: crashmetrics/${{ github.event.inputs.dir }}/${{ github.event.inputs.func }}/test-dep-dev.zip
+            zip_file: ${{ github.event.inputs.func }}/test-dep-dev.zip
